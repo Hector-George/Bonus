@@ -1,0 +1,58 @@
+name: Bug Report
+description: 报告随机抽数系统的问题或异常行为
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！请尽量提供可复现的信息。提交前请先搜索现有 Issue，避免重复。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 发生了什么？你期望发生什么？
+      placeholder: 例如：不重复模式下抽 10 个号码，偶尔出现重复。
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 请按顺序写出操作步骤。
+      placeholder: |
+        1. 启动 python main.py
+        2. 设置范围为 1–10
+        3. 抽取个数设为 10
+        4. 点击开始抽取
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 操作系统、Python 版本和启动方式。
+      placeholder: Windows 11, Python 3.13.13, PyCharm / PowerShell
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 报错信息或截图
+      description: 如果有 traceback、控制台输出或界面截图，请贴在这里。
+      render: shell
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我已经搜索过现有 Issues。
+          required: true
+        - label: 我使用的是 main 分支的最新代码。
+          required: true

@@ -1,0 +1,52 @@
+name: RandomNumberSystem Tests
+
+on:
+  push:
+    paths:
+      - "RandomNumberSystem/**"
+      - ".github/workflows/random-number-system-tests.yml"
+  pull_request:
+    paths:
+      - "RandomNumberSystem/**"
+      - ".github/workflows/random-number-system-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+        python-version:
+          - "3.10"
+          - "3.13"
+    defaults:
+      run:
+        working-directory: RandomNumberSystem
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Show Python version
+        run: python --version
+
+      - name: Run unit tests
+        run: python -m unittest discover -v
+
+      - name: Run CLI smoke test
+        run: python main.py --cli --min 1 --max 10 --count 3
+
+      - name: Compile all modules
+        run: python -m compileall -q app.py draw_engine.py main.py tests

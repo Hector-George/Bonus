@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 安全问题
+    url: https://github.com/Hector-George/Bonus/security/advisories/new
+    about: 请不要在公开 Issue 中披露安全漏洞，使用私密报告功能。
+  - name: 项目说明
+    url: https://github.com/Hector-George/Bonus/tree/main/RandomNumberSystem
+    about: 查看 RandomNumberSystem 的安装、运行和测试说明。
